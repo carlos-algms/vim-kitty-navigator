@@ -30,6 +30,7 @@ function! s:KittyCommand(args)
   let pw = get(g:, 'kitty_navigator_password', 0)
   let pw_s = pw != "" ? '--password="' . pw . '" ' : ''
   let cmd = 'kitty @ ' . pw_s . a:args
+  let wrappedCmd = "script -q -c '" . cmd . "' /dev/null"
   return system(cmd)
 endfunction
 
